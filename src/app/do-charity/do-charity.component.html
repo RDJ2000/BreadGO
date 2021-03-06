@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header">You are Doing Something Great!</div>
+  <div class="card-body">
+    <div>
+      <label position="floating" >Contact No.</label>
+      <input  style="margin: 0.3rem;" [(ngModel)]='contactNo'>
+    </div>
+    <div>
+      <label position="floating" >Quantity of Food</label>
+      <input  style="margin: 0.3rem;" [(ngModel)]='quantity'>
+    </div>
+
+    <div>
+      <label position="floating">Pick Up Time</label>
+      <input  style="margin: 0.3rem;" type="time" id="appt" name="appt" [(ngModel)]='timeOfPickup' class="form-control" style="width:30%;">
+      <!-- <datetime display-format="HH:mm" [(ngModel)]='timeOfPickup'></datetime> -->
+    </div>
+    <div>
+      <label position="floating">Pickup Address</label>
+      <input  style="margin: 0.3rem;" [(ngModel)]='address'>
+    </div>
+    <!-- <small>OR</small>
+    <div>
+         <button (click)="location()"   shape="round" >
+        Live Location
+      </button>
+    </div> -->
+    <div id="mapid" style="height : 190px;"></div>
+  </div>
+  <div class="card-footer">
+   <button type="button" (click)='SubmitPost()' class="btn btn-primary ">Submit</button>
+  </div>
+</div>
+
+
+
+

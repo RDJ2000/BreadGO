@@ -1,0 +1,49 @@
+<!-- <div class="jumbotron">
+  <div>
+  <label position="floating" >Mobile No</label>
+  <input [(ngModel)]='phoneNumber'><button  fill="clear" shape="round">
+    Send OTP
+   </button>
+
+  </div>
+   <div ></div>
+<div>
+   <label position="floating">OTP</label>
+        <input  [(ngModel)]='verificationCode'><button (click)="verifyLoginCode()" fill="clear" shape="round">
+         Verify
+        </button>
+
+        <button color="primary">Login</button>
+  </div>
+</div>
+ -->
+
+
+
+<div class="container mt-5">
+  <form class="mt-5">
+      <div class="form-group text-center">
+        <label for="Number">Phone Number</label>
+        <input type="text" [(ngModel)]='phoneNumber' class="form-control" id="Number" name="phoneNumber" placeholder="Enter Mobile Number">
+      </div>
+      <div class="form-group form-check">
+        <div id="recaptcha-container"></div>
+      </div>
+      <div class="form-group mb-1" style="float: right;">
+          <button type="submit"  (click)="sendLoginCode()" class="btn btn-outline-primary align">Send OTP</button>
+      </div>
+
+      <div class="form-group text-center mt-5">
+        <label for="OTP" style="text-align: center;">OTP</label>
+        <input type="text" class="form-control" id="OTP" placeholder="Enter OTP" name="otpverify" [(ngModel)]='verificationCode'>
+      </div>
+      <div class="form-group" style="float: right;">
+          <button class="btn btn-outline-secondary algin" (click)="verifyLoginCode()">Verify</button>
+        </div>
+        <small class="mt-3">Please Verify the OTP</small>
+        <div class="form-group text-center mt-5 ">
+          <button class="mt-5" type="submit" class="btn btn-outline-primary" [routerLink]="['/home']" >Submit</button>
+        </div>
+
+    </form>
+</div>
