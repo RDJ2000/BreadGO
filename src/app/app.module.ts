@@ -10,7 +10,9 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { DoCharityComponent } from './do-charity/do-charity.component';
 import { AccountComponent } from './account/account.component';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +23,11 @@ import { DatePipe } from '@angular/common'
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+   ToastrModule.forRoot()
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

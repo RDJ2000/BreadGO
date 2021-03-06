@@ -4,7 +4,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import { environment } from 'src/environments/environment';
 import { LoginService } from '../login.service';
-
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class LoginPageComponent implements OnInit {
   verificationCode: any;
 
   user: any;
-  constructor( public win:LoginService) {
+  constructor( public win:LoginService,public TS:ToastrService) {
     firebase.initializeApp(environment.firebaseConfig)
   }
 
@@ -57,10 +57,12 @@ export class LoginPageComponent implements OnInit {
 
                     this.user = result.user;
                     console.log(result.user);
+                    this.TS.success('OTP Verified ')
 
 
     })
-    .catch( (error: any) => console.log(error, "Incorrect code entered?"));
+    .catch( (error: any) => {console.log(error, "Incorrect code entered?");
+  this.TS.error('OTP verification Failed')});
   }
 
 

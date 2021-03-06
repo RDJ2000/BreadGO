@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DatePipe } from '@angular/common';
-
+import {ToastrService} from 'ngx-toastr';
 declare let L: { map: (arg0: string) => { (): any; new(): any; setView: { (arg0: any[], arg1: number): any; new(): any; }; }; tileLayer: (arg0: string, arg1: { attribution: string; maxZoom: number; id: string; tileSize: number; zoomOffset: number; accessToken: string; }) => { (): any; new(): any; addTo: { (arg0: any): void; new(): any; }; }; marker: (arg0: any[]) => { (): any; new(): any; addTo: { (arg0: any): any; new(): any; }; }; };
 @Component({
   selector: 'app-do-charity',
@@ -17,7 +17,7 @@ export class DoCharityComponent implements OnInit {
   status: any;
   date:any
   contactNo:any
-  constructor(public fireStore:AngularFirestore,private datePipe: DatePipe) {
+  constructor(public fireStore:AngularFirestore,private datePipe: DatePipe,public TS:ToastrService) {
     this.date=new Date()
     this.date = this.datePipe.transform(this.date, 'yyyy-MM-dd');
   }
@@ -64,6 +64,8 @@ var marker = L.marker([position.coords.latitude,position.coords.longitude]).addT
       .then(res=>{
         this.status = "Success"
         console.log(res)
+        this.TS.success('Message is recorded')
+        this.TS.info('Will Contact You Soon!')
 
       })
       .catch(error=>{

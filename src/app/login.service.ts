@@ -13,4 +13,8 @@ export class LoginService {
   getUser(){
     return this.fireAuth.authState;
   }
+
+  logOutUser(){
+    return this.fireAuth.signOut();
+  }
 }
